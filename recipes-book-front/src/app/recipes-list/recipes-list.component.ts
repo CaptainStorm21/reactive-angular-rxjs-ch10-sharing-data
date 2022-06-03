@@ -37,6 +37,14 @@ export class RecipesListComponent implements OnInit {
   onCancelRating(recipe: Recipe) {
     console.log(recipe)
   }
+
+  /** step 2
+   * In RecipesListComponent, we implement the editRecipe method, which
+   * takes as input the selected recipe and performs two actions:
+   * It updates the last-selected recipe by calling updateSelectedRecipe
+   * (recipe:Recipe), which we created in SharedDataService. So, we should
+   * inject the SharedDataService service in RecipesListComponent.
+  */
   editRecipe(recipe: Recipe) {
     this.sharedService.updateSelectedRecipe(recipe);
     this.router.navigate(['/recipes/details']);
