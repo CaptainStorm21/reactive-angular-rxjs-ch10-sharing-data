@@ -1,0 +1,21 @@
+
+Create a shared Angular service.
+Define a private BehaviorSubject that will multicast the shared value to the subscribers. You need to specify the type of it, and it should be initialized with the default value of the shared data. As we use BehaviorSubject, late subscribers will always get the last value emitted, since BehaviorSubject stores the last-emitted value. Each consumer component should access the same copy of the data. BehaviorSubject here is only handled inside the shared service.
+Define a public Observable that will hold the read-only shared value.
+Create the update method inside the service that will update the shared value by calling the next method in the Subject type and passing the last value.
+Inject the service in the component that updates the value of the shared data and call the update method implemented in the service (step 4).
+Inject the service in the component that consumes the value of the shared data and subscribe to the exposed Observable in the service.
+
+
+
+Highlighting other ways for sharing data
+The previous pattern for sharing data has many benefits:
+
+Improves the sharing of data between unrelated components
+Manages mutability risk
+Makes communication between components easier
+We can use Angular services and RxJS's BehaviorSubject to manage our application's state. This works perfectly in many situations, but for big applications where there are a lot of user interactions and multiple data sources, managing states in services can become complicated.
+
+In this case, we can use a state management library to manage the state of our application, which is the main goal of state management libraries.
+
+There are many great state management libraries out there to manage states in Angular. The most popular is NgRx. All the state management libraries have one thing in common – they are built on top of RxJS Observables and the state is stored in BehaviorSubject.
